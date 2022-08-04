@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script src="index.js"></script>
+<LINK REL=StyleSheet HREF="styling.css" TYPE="text/css" MEDIA=screen>
+<body>
+<table>
+  <tr><th><b>Number of dogs</b></th><th><b>Number of days</b></th></tr>
+  <tr><td><input id="number-dogs" onchange="calculate()"></th><td><input id="number-days" onchange="calculate()"></th></tr>
+</table>
+<br/>
+<br/>
+<div id="cost"></div>
+</body>
+
+
+<script>
+let numberDays = 0
+let single = 0
+function calculate(){
+  let numberDogs = document.getElementById("number-dogs").value
+  numberDays = document.getElementById("number-days").value
+
+  if(!numberDays){
+    numberDays = 0
+  }
+
+  let numberCouples = Math.floor(numberDogs/2)
+
+  if(numberDogs%2 != 0){
+    single = 1
+  } else{
+    single = 0
+  }
+
+  let cost = numberCouples*numberDays*60 + single*40*numberDays
+
+  document.getElementById("cost").innerHTML = "There are " +numberCouples+ " pair(s) of dogs. <br/><br/> "
+  if(single != 0){
+    document.getElementById("cost").innerHTML += "There is a single dog.<br/><br/>"
+  }
+  document.getElementById("cost").innerHTML += "The cost for "+ numberCouples + " pair(s) of dogs for " + numberDays + " days is \$60 x " +numberCouples + " x " + numberDays + " = \$"+(60*numberDays*numberCouples)
+  document.getElementById("cost").innerHTML += "<br/><br/>The cost for a single dog for " + numberDays + " day(s) is $40 x " + numberDays + " = $"+(40*numberDays)
+  document.getElementById("cost").innerHTML += "<br/><br/><br/> Total cost:  $"+cost.toFixed(2)
+}
+</script>
