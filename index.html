@@ -41,7 +41,9 @@ function calculate(){
     document.getElementById("cost").innerHTML += "There is a single dog.<br/><br/>"
   }
   document.getElementById("cost").innerHTML += "The cost for "+ numberCouples + " pair(s) of dogs for " + numberDays + " days is \$60 x " +numberCouples + " x " + numberDays + " = \$"+(60*numberDays*numberCouples)
-  document.getElementById("cost").innerHTML += "<br/><br/>The cost for a single dog for " + numberDays + " day(s) is $40 x " + numberDays + " = $"+(40*numberDays)
+  if(single != 0){
+    document.getElementById("cost").innerHTML += "<br/><br/>The cost for a single dog for " + numberDays + " day(s) is $40 x " + numberDays + " = $"+(40*numberDays)
+  }
   document.getElementById("cost").innerHTML += "<br/><br/><br/> Total cost:  $"+cost.toFixed(2)
 }
 </script>
